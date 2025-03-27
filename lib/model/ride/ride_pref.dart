@@ -17,10 +17,30 @@ class RidePreference {
       required this.requestedSeats});
 
   @override
+  //TODO: implement the == operator and hash method
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is RidePreference &&
+        other.departure == departure &&
+        other.departureDate == departureDate &&
+        other.arrival == arrival &&
+        other.requestedSeats == requestedSeats;
+        
+  }
+  @override
   String toString() {
     return 'RidePref(departure: ${departure.name}, '
         'departureDate: ${departureDate.toIso8601String()}, '
         'arrival: ${arrival.name}, '
         'requestedSeats: $requestedSeats)';
   }
+  @override
+  // TODO: implement hashCode
+  int get hashCode => departure.hashCode ^ departureDate.hashCode ^
+      arrival.hashCode ^ requestedSeats.hashCode;
+  
 }
+
+  
+  
